@@ -19,6 +19,20 @@ AddEventHandler('esx:setJob', function(job)
 	PlayerData.job = job 
 end) 
 
+-- Set Ped 
+Citizen.CreateThread(function()
+	local hash = GetHashKey('s_m_m_paramedic_01')
+	while not HasModelLoaded(hash) do
+		RequestModel(hash)
+		Wait(20)
+	end 
+
+	ped = CreatePed(21, hash, 306.2, -597.24, 43.28 -1, 0.0, true, true)
+	FreezeEntityPosition(ped, true)
+    SetEntityInvincible(ped, true)
+    TaskStartScenarioInPlace(ped, 'WORLD_HUMAN_GUARD_STAND', 0, true)
+end)
+
 -- Draw 3D text 
 Citizen.CreateThread(function ()
 	while true do
@@ -29,6 +43,10 @@ Citizen.CreateThread(function ()
                 local location = v
                 DrawText3D(v.Coords.x, v.Coords.y, v.Coords.z - 1.0, _U('requestCheckIn'))
                 if IsControlJustReleased(0, 38) then
+                	local ped = GetPlayerPed(-1)
+                	exports['pogressBar']:drawBar(5000, 'Checking in to the hospital.')
+                	TaskStartScenarioInPlace(ped, 'WORLD_HUMAN_CLIPBOARD', 0, true)
+                	Citizen.Wait(5000)
                     TriggerServerEvent('esx_checkin:keyPressed')
                 end
 			end
