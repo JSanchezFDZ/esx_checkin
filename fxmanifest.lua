@@ -1,7 +1,7 @@
 fx_version 'adamant' 
 game 'gta5' 
 description 'Check in at the hospital.'
-version '1.0.0'
+version '1.1'
  
 client_scripts {
 	'@es_extended/locale.lua',
