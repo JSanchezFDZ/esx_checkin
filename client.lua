@@ -27,7 +27,7 @@ Citizen.CreateThread(function()
 		Wait(20)
 	end 
 
-	ped = CreatePed(21, hash, 306.2, -597.24, 43.28 -1, 0.0, true, true)
+	local ped = CreatePed(21, hash, 306.2, -597.24, 43.28 -1, 0.0, true, true)
 	FreezeEntityPosition(ped, true)
     SetEntityInvincible(ped, true)
     TaskStartScenarioInPlace(ped, 'WORLD_HUMAN_GUARD_STAND', 0, true)
