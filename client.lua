@@ -44,7 +44,7 @@ Citizen.CreateThread(function ()
                 DrawText3D(v.Coords.x, v.Coords.y, v.Coords.z - 1.0, _U('requestCheckIn'))
                 if IsControlJustReleased(0, 38) then
                 	local ped = GetPlayerPed(-1)
-                	exports['pogressBar']:drawBar(5000, 'Checking in to the hospital.')
+                	exports['progressBars']:startUI(5000, 'Checking in to the hospital.')
                 	TaskStartScenarioInPlace(ped, 'WORLD_HUMAN_CLIPBOARD', 0, true)
                 	Citizen.Wait(5000)
                     TriggerServerEvent('esx_checkin:keyPressed')
